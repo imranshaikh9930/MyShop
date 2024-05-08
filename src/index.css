@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: Inter;
+}
+.star-color{
+    color:rgb(255,164,28);
+}
+
+.Login-bg{
+    /* background-image: url("./assets/Eccom3.png"); */
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* height: 100vh; */
+    object-fit: cover;
+    opacity:0.8;
+}
