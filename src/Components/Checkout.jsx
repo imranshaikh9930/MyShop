@@ -7,12 +7,7 @@ import Navbar from './Navbar';
 const Checkout = () => {
     const cart = useSelector((state)=>state.cart);
     const user  = useSelector((state)=>state.user);
-    // const subtotal = useSelector((state) =>
-    //     state.cart.reduce(
-    //       (subtotal, product) => subtotal + product.price * product.quantity,
-    //       0
-    //     )
-    //   );
+    
   return (
 
     <>

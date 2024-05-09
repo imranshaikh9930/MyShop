@@ -7,6 +7,7 @@ import moment from 'moment';
 import { v4 } from 'uuid';
 import { addOrder, emptyCart } from '../redux/actions';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 // import "./Payment.css";
 const Payment = () => {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const Payment = () => {
           setSucceeded(true)
           setDisabled(true)
           dispatch(emptyCart());
+          toast.success("Ordered Sucessfully")
           
           navigate('/orders', {replace: true});
         }, 1000);
@@ -98,7 +100,7 @@ const Payment = () => {
                   {utils.formatter.format(utils.getTotalPrice(cart))}
                 </strong>
               </div>
-              <button disabled={processing || disabled || succeeded}>
+              <button className='bg-[rgb(255,164,28)] text-white p-2  rounded-lg' disabled={processing || disabled || succeeded}>
                 <span>{processing ? "processing" : "Buy Now"}</span>
               </button>
             </div>

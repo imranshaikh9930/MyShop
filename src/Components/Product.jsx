@@ -16,7 +16,7 @@ const Product = ({products}) => {
     }
 
   return (
-    <div className="w-full max-w-sm h-96  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-sm md:max-w-sm h-96  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <NavLink to={`/product/${products.id}`}>
         <img className="p-8 rounded-t-lg w-36 h-44 object-cover mx-auto md:w-48 md:h-60" src={products.image} />
       </NavLink>

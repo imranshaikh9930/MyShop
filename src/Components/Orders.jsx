@@ -35,7 +35,7 @@ const Orders = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="orders py-[1em] px-[4em]">
+    <div className="orders py-[1em] px-[4em] font-Inter">
       <h1>Your Orders</h1>
 
       <div className="orders__order p-[1em] md:p-0 text-[1em] ">
