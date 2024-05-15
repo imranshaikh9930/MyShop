@@ -47,9 +47,9 @@ const Carousal = () => {
     }
   return (
     <div className='flex w-[100vw] items-center -mt-4 md:mt-10  bg-red-500' style={{ scrollBehavior: 'smooth' }}>
-    <button onClick={() => handleClick("left")} className='absolute md:top-[35%]  w-[80px] h-[40px] text-3xl md:text-5xl cursor-pointer'>{"<"}</button>
-    <img src={arr[index]} alt="" className='max-w-[100%] h-auto object-cover mt-[5rem] md:mt-10' />
-    <button onClick={() => handleClick("right")} className='absolute md:top-[35%] w-[80px] h-[40px] text-3xl md:text-5xl border-none cursor-pointer right-0'>{">"}</button>
+    <button onClick={() => handleClick("left")} className='absolute  hidden sm:block  md:top-[35%]  w-[80px] h-[40px] text-3xl md:text-5xl cursor-pointer'>{"<"}</button>
+    <img src={arr[index]} alt="" className='max-w-[100%] h-full object-cover mt-[5rem] md:mt-10' />
+    <button onClick={() => handleClick("right")} className='absolute hidden sm:block  md:top-[35%] w-[80px] h-[40px] text-3xl md:text-5xl border-none cursor-pointer right-0'>{">"}</button>
 </div>
 
 

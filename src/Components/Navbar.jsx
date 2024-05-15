@@ -27,9 +27,9 @@ const Navbar = ({handleSearch}) => {
   // const getUserName = (email) => email.split("@")[0];
   return (
     
-    <header className="fixed top-0 left-0 right-0 z-[100]">
+    <header className="fixed top-0 left-0 right-0 z-[100] w-screen">
     <nav className="bg-black max-w-screen h-full flex justify-between items-center text-white p-3 gap-3">
-      <NavLink className="text-xl" to={"/"}>
+      <NavLink className="text-xl hidden md:block" to={"/"}>
       {/* <img src={logo} alt="" className="w-[100px] object-contain mx-auto mt-[18px] "/> */}
       MY SHop
       </NavLink>
@@ -84,9 +84,9 @@ const Navbar = ({handleSearch}) => {
         <NavLink to={"/orders"}>Return & <br/>Orders</NavLink>
         <div className="md:relative">
           <NavLink to={"/cart"}>
-            <FaShoppingCart className="w-6 h-6 text-yellow-500" />
+            <FaShoppingCart className="w-6 h-6 text-yellow-500 md:mr-4" />
           </NavLink>
-          <p className="absolute -top-3 -right-1 bg-red-600 rounded-full w-5 text-center">
+          <p className="absolute -top-3 -right-1 bg-red-600 rounded-full w-5 text-center md:mr-4">
             {cart.length}
           </p>
         </div>

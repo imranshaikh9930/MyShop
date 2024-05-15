@@ -23,13 +23,16 @@ const Home = () => {
   };
 
   return (
-    <div className=" w-full h-[100vh] pb-3  overflow-hidden">
+    <div className="overflow-hidden max-w-screen h-[100vh] pb-3 mx-auto">
       <Navbar handleSearch={handleSearch} />
 
       {/* Making Carousal */}
       {/* <img src={bg1} alt="bg1" className='h-5' /> */}
+      <div className="w-screen bg-red-500">
+
       <Carousal />
-      <div className="flex justify-center items-center gap-10 max-w-screen flex-wrap max-w-screen absolute top-[62%] -mt-[7rem] md:-mt-[3rem]">
+      </div>
+      <div className="flex justify-center items-center gap-10 max-w-screen flex-wrap max-w-screen absolute top-[62%] -mt-[10rem] md:-mt-[3rem]">
       {noProductsFound ? (
         <p className="w-[100vw] text-2xl font-bold text-center">Sorry ! No product found :-</p>
       ) : (
