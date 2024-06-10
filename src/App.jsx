@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 // import Navbar from "./Components/Navbar";
+import "./index.css";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './Components/Home';

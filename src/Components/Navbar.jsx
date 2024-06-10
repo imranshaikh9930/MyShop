@@ -27,7 +27,7 @@ const Navbar = ({handleSearch}) => {
   // const getUserName = (email) => email.split("@")[0];
   return (
     
-    <header className="fixed top-0 left-0 right-0 z-[100] w-screen">
+    <header className="fixed top-0 left-0 right-0 z-[100] w-screen ">
     <nav className="bg-black max-w-screen h-full flex justify-between items-center text-white p-3 gap-3">
       <NavLink className="text-xl hidden md:block" to={"/"}>
       {/* <img src={logo} alt="" className="w-[100px] object-contain mx-auto mt-[18px] "/> */}

@@ -23,7 +23,7 @@ const Home = () => {
   };
 
   return (
-    <div className="overflow-hidden max-w-screen h-[100vh] pb-3 mx-auto">
+    <div className="overflow-hidden max-w-screen h-[100vh] pb-3 mx-auto font-Inter">
       <Navbar handleSearch={handleSearch} />
 
       {/* Making Carousal */}
