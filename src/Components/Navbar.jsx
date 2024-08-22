@@ -11,7 +11,7 @@ const Navbar = ({handleSearch}) => {
     const cart  = useSelector((state)=>state.cart);
     const user = useSelector((state)=>state.user);
       const navigate = useNavigate();
-    console.log(user); 
+    // console.log(user); 
 
     const handleLogout = () => {
       signOut(auth)

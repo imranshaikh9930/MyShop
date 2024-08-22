@@ -23,28 +23,37 @@ const Home = () => {
   };
 
   return (
-    <div className="overflow-hidden max-w-screen h-[100vh] pb-3 mx-auto">
+    <>
+    
+    <div className="overflow-hidden flex flex-col min-w-screen min-h-screen pb-3 md:mb-[5rem] mx-auto">
       <Navbar handleSearch={handleSearch} />
 
       {/* Making Carousal */}
       {/* <img src={bg1} alt="bg1" className='h-5' /> */}
-      <div className="w-screen bg-red-500">
+      <div className="min-w-screen h-screen mb-[5rem]">
 
       <Carousal />
       </div>
-      <div className="flex justify-center items-center gap-10 max-w-screen flex-wrap max-w-screen absolute top-[62%] -mt-[10rem] md:-mt-[3rem]">
+      <div className="flex justify-center items-center gap-10 max-w-screen flex-wrap  absolute top-[62%] -mt-[10rem] md:-mt-[3rem] md:py-[5rem]">
       {noProductsFound ? (
         <p className="w-[100vw] text-2xl font-bold text-center">Sorry ! No product found :-</p>
       ) : (
           <>
            {filterData.map((item) => (
-            <Product key={item.id} products={item} />
+            <div key={item.id} className="">
+
+              <Product key={item.id} products={item} />
+            </div>
           ))}
           </>
          
         )}
         </div>
+
+       
     </div>
+    
+        </>
   );
 };
 
