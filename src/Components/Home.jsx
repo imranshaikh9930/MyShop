@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Product from "./Product";
 import { prod } from "../Data/data";
 import Carousal from "./Carousal";
+import Footer from "./Footer";
 const Home = () => {
   const [filterData, setFilterData] = useState(prod);
   const [search, setSearch] = useState("");
@@ -25,12 +26,12 @@ const Home = () => {
   return (
     <>
     
-    <div className="overflow-hidden flex flex-col min-w-screen min-h-screen pb-3 md:mb-[5rem] mx-auto">
+    <div className="overflow-hidden flex flex-col min-w-screen h-auto pb-3 md:mb-[5rem] mx-auto">
       <Navbar handleSearch={handleSearch} />
 
       {/* Making Carousal */}
       {/* <img src={bg1} alt="bg1" className='h-5' /> */}
-      <div className="min-w-screen h-screen mb-[5rem]">
+      <div className="min-w-screen h-[50%] flex justify-center items-center">
 
       <Carousal />
       </div>
@@ -52,6 +53,7 @@ const Home = () => {
 
        
     </div>
+    <Footer/>
     
         </>
   );

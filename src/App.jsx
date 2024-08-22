@@ -12,6 +12,7 @@ import Orders from './Components/Orders';
 import Login from "./Components/Login";
 import Signup from './Components/Signup';
 import Forgot from './Components/Forgot';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         }/>
         <Route path="/orders" element={<Orders/>}/>
       </Routes>
+      {/* <Footer /> */}
     </Router>
     </>
   )
