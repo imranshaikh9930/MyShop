@@ -19,7 +19,7 @@ const Home = () => {
           );
 
     setFilterData(filtered);
-    setNoProductsFound(filtered.length === 0);
+    setNoProductsFound(filtered.length === 0)
   };
 
   return (
