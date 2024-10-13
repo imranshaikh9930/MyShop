@@ -79,7 +79,7 @@ const Carousal = () => {
         <h3>6</h3>
       </div>
     </Slider> */}
-    {/* <h1 className="text-3xl text-black">Imran</h1> */}
+  
      
     </div>
   );
