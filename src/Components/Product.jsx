@@ -1,41 +1,83 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { addToCart } from '../redux/actions';
-import { useDispatch } from 'react-redux';
+// components/Product.jsx
+import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
 import * as utils from "../utils/logic";
 import Star from "./Star";
-const Product = ({products}) => {
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { StateContext } from "../Context/Context";
+import {addToCart } from "../redux/cart/cartSlice";
+import toast from "react-hot-toast";
 
-    // console.log(products);
+const Product = ({ product }) => {
+  const dispatch = useDispatch();
+  const { wishlist, toggleWishlist } = useContext(StateContext);
 
-    const dispatch = useDispatch();
+  const handleProduct = (product) => {
+    dispatch(addToCart(product));
+    toast.success("Item Added To Cart")
+  };
 
-    const handleProduct = ()=>{
-        
-        dispatch(addToCart(products));
-    }
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
+
+  // Optional: calculate discount
+  const originalPrice = Math.round(product.price * 1.2);
 
   return (
-    <div className="w-screen max-w-sm md:max-w-sm h-96 md:pb-[5rem] bg-white border border-gray-200 rounded-lg shadow ">     
-        <img className="p-8 rounded-t-lg w-36 h-44 object-cover mx-auto md:w-48 md:h-60" src={products.image} />
+    <div className="relative group w-full h-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition duration-300 ease-in-out overflow-hidden">
 
+      {/* Discount Badge */}
+      <div className="absolute top-2 left-2 z-40 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+      {product.discountPercent}% OFF
+      </div>
+
+      {/* Wishlist Heart Icon */}
+      <div
+        onClick={() => toggleWishlist(product)}
+        className="absolute top-2 right-2 z-40 cursor-pointer"
+      >
+        {isWishlisted ? (
+          <AiFillHeart className="text-red-500 text-2xl" />
+        ) : (
+          <AiOutlineHeart className="text-gray-400 text-2xl" />
+        )}
+      </div>
+
+      {/* Product Image */}
+      <img
+        className="p-6 rounded-t-lg w-36 h-44 object-contain mx-auto md:w-48 md:h-60 z-10 relative transition-transform duration-300 hover:scale-110 hover:-translate-y-2 hover:cursor-pointer"
+        src={product.image}
+        alt={product.title}
+      />
+
+      {/* Product Details */}
       <div className="px-5 pb-5">
-        <a href="#">
-          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{products.title}</h5>
-        </a>
-        <div className="flex items-center mt-2.5 mb-5 text-[rgb(255,164,28)]">
-          {/* Rating */}
-          {utils.renderRating(products.rating.rate * 2).map((val, index) => (
-            <Star key={index} text={val} className="star-color" />
+        <h5 className="text-lg font-semibold tracking-tight text-gray-800 truncate">
+          {product.title}
+        </h5>
+
+        {/* Rating */}
+        <div className="flex items-center mt-2.5 mb-5 text-yellow-500">
+          {utils.renderRating(product.rating.rate * 2).map((val, index) => (
+            <Star key={index} text={val} />
           ))}
         </div>
+
+        {/* Price & Button */}
         <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-gray-900 dark:text-white">₹{products.price}</span>
-          <button href="#" className="text-white bg-[rgb(255,164,28)] hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => handleProduct(products)}>Add to cart</button>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold text-gray-900">₹{product.price}</span>
+            <span className="text-sm text-gray-400 line-through">₹{originalPrice}</span>
+          </div>
+          <button
+            className="text-white bg-[rgb(255,164,28)] hover:bg-black transition px-5 py-2 rounded-lg text-sm"
+            onClick={()=>handleProduct(product)}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

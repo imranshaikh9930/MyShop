@@ -1,63 +1,47 @@
-import React, { useContext, useEffect } from 'react';
-import CheckoutProduct from './CheckoutProduct';
+import React, { useContext } from 'react';
 import { StateContext } from '../Context/Context';
-// import './Order.css';
 
 const Order = ({ order }) => {
-
-  console.log(order);
-  const {address} = useContext(StateContext);
-
-
-  // Format the date
-  const formatDate = (date) => {
-    return new Date(date).toLocaleString();
-  };
+  const { address } = useContext(StateContext);
 
   return (
-    <div className="order p-[2em] m-[1em] bg-white flex flex-col">
-      <h2>Order</h2>
-      <p className="order__id text-[#777] self-end">
-        <small>{order.order_id}</small>
-      </p>
-      <div className='flex justify-between items-center'>
-
-      <p>{order.created}</p>
-      <p>Address:- {address}</p>
+    <div className="order bg-white rounded-xl shadow-md p-6 m-4 font-Inter">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+        <h2 className="text-xl font-semibold text-gray-800">Order Summary</h2>
+        <div className="text-sm text-gray-600 text-right">
+          <p><small>Order ID: {order.order_id}</small></p>
+          <p>{order.created}</p>
+        </div>
       </div>
-      {order.cart?.map((item) => (
-    
-      <div key={item.id} className="sm:max-w-[100vw] md:max-w-screen object-cover flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md md:flex-row md:p-4 md:m-6 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 
-  <img
-    className="object-cover w-3/4 rounded-t-lg h-full my-2 md:h-full md:w-36 md:rounded-lg"
-    // eslint-disable-next-line react/prop-types
-    src={item.image}
-  
-  />
-  <div className="flex flex-col justify-between p-4 leading-normal">
-    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      {item.title}
-    </h5>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-      {item.description}
-    </p>
-    <p className="mb-3 font-bold text-gray-700 dark:text-gray-400">
-    ₹{item.price}
-    </p>
-    <p className="mb-3 font-bold text-gray-700 dark:text-gray-400">
-      Rating: {item.rating.rate}
-    </p>
-    <div className='flex flex-col md:flex-row gap-4 '>
-
-    </div>
-   
-  </div>
-</div>
-      ))}
-      <p className="order__total font-medium self-end">
-        Order Total:{order.amount} {/* Assuming 'amount' is the total price */}
+      <p className="text-sm mb-4 text-gray-700">
+        <span className="font-medium">Shipping Address:</span> {address}
       </p>
+
+      <div className="flex flex-col gap-6">
+        {order.cart?.map((item) => (
+          <div
+            key={item.id}
+            className="flex flex-col md:flex-row items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full md:w-32 h-32 object-contain rounded-md"
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+              <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+              <p className="text-md font-semibold text-green-700 mt-2">₹{item.price}</p>
+              <p className="text-sm text-gray-500">Rating: {item.rating?.rate}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="text-right mt-6 font-semibold text-lg text-gray-800">
+        Order Total: {order.amount}
+      </div>
     </div>
   );
 };

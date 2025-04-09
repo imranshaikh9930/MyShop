@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
 import bg1 from "../assets/bannerImgOne.jpg";
 import bg2 from "../assets/bannerImgTwo.jpg";
@@ -8,79 +8,85 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Carousal = () => {
-  const arr = [bg1, bg2, bg3, bg4];
+  const images = [bg1, bg2, bg3, bg4];
 
   const settings = {
-    dots: true, // Show dots for navigation
-    infinite: true, // Enable infinite scrolling
-    speed: 800, // Transition speed (500ms)
-    slidesToShow: 1, // Show one slide at a time
-    slidesToScroll: 1, // Scroll one slide at a time
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 4000, // Autoplay interval (2 seconds)
-    pauseOnHover: true, // Pause autoplay on hover
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024, // Screens larger than 1024px
+        breakpoint: 1024,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
+        },
       },
-      {
-        breakpoint: 600, // Screens larger than 600px
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 480, // Screens larger than 480px
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+    ],
   };
 
   return (
-    <div className="w-[100vw]  items-center -mt-4 md:mt-10  text-black relative -z-10">
-      <Slider {...settings}>
-        {arr.map((item, i) => (
-          <div className="flex" key={i}>
-            <img
-              src={item}
-              alt={`Slide ${i + 1}`}
-              className="w-full h-auto object-cover mt-[5rem] md:mt-10"
-            />
-          </div>
-        ))}
-      </Slider>
-       {/* <Slider {...settings} className='flex justify-center items-center'>
-      <div>
-        <h3>1</h3>
+    <div className="w-full bg-white">
+      {/* Heading */}
+      <div className="text-center pt-6 mb-4">
+        {/* <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          🛍️ Product Advertisement
+        </h2> */}
+        <h2 className="text-gray-500 text-3xl md:text-4xl mt-2">
+          Discover the latest arrivals and exclusive offers!
+        </h2>
       </div>
-      <div>
-        <h3>2</h3>
+
+      {/* Slider Container */}
+      <div className="w-full max-w-[1440px] px-2 md:px-6 mx-auto overflow-hidden rounded-xl relative">
+        <Slider {...settings}>
+          {images.map((item, i) => (
+            <div
+              key={i}
+              className="h-[70vh] w-full flex justify-center items-center bg-gray-100 rounded-xl "
+            >
+              <img
+                src={item}
+                alt={`Slide ${i + 1}`}
+                className="w-full h-full object-cover rounded-xl "
+              />
+            </div>
+          ))}
+        </Slider>
       </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
-    </Slider> */}
-  
-     
+
+      {/* Dots Custom Style */}
+      <style>
+        {`
+          .slick-dots {
+            bottom: 15px;
+          }
+          .slick-dots li button:before {
+            font-size: 12px;
+            color: #888;
+          }
+          .slick-dots li.slick-active button:before {
+            color: #111;
+          }
+          .slick-prev, .slick-next {
+            z-index: 50;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.4);
+            border-radius: 50%;
+          }
+          .slick-prev::before, .slick-next::before {
+            font-size: 20px;
+            color: white;
+          }
+        `}
+      </style>
     </div>
   );
 };

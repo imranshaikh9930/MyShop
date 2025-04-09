@@ -1,21 +1,21 @@
-import React, { useState,useContext } from "react";
-import CheckoutProduct from "./CheckoutProduct";
-import { useDispatch, useSelector } from "react-redux";
-import { CardElement } from "@stripe/react-stripe-js";
-import * as utils from "../utils/logic";
-import moment from "moment";
-import { v4 } from "uuid";
-import { addOrder, emptyCart } from "../redux/actions";
+import { useContext, useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { FaPen } from "react-icons/fa";
-import { Input } from "postcss";
 import { StateContext } from "../Context/Context";
-// import "./Payment.css";
+import { v4 } from "uuid";
+import moment from "moment";
+import { FaPen } from "react-icons/fa";
+import { addOrder } from "../redux/userInfo/userInfoSlice";
+import { emptyCart } from "../redux/cart/cartSlice";
+import * as utils from "../utils/logic";
+import toast from "react-hot-toast";
+import CheckoutProduct from "./CheckoutProduct";
+import { CardElement } from "@stripe/react-stripe-js";
+
 const Payment = () => {
   const dispatch = useDispatch();
   const {address,setAddress} = useContext(StateContext)
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart.cart);
   const navigate = useNavigate();
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
@@ -25,29 +25,37 @@ const Payment = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  
+    // If cart is empty, redirect to orders
     if (!cart.length) {
       navigate("/orders", { replace: true });
       return;
     }
-    !error && setProcessing(true);
-
-    const order = {
-      order_id: v4(),
-      amount: utils.formatter.format(utils.getTotalPrice(cart)),
-      created: moment().format("MMMM Do YYYY, h:mma"),
-      cart,
-    };
-    dispatch(addOrder(order));
-
-    setTimeout(() => {
-      setProcessing("");
-      setSucceeded(true);
-      setDisabled(true);
-      dispatch(emptyCart());
-      toast.success("Ordered Sucessfully");
-
-      navigate("/orders", { replace: true });
-    }, 1000);
+  
+    if (!error) {
+      setProcessing(true);
+  
+      // Order object creation
+      const order = {
+        order_id: v4(),
+        amount: utils.formatter.format(utils.getTotalPrice(cart)),
+        created: moment().format("MMMM Do YYYY, h:mma"),
+        cart, // you can rename it to items if you want
+      };
+  
+      // ✅ Dispatch addOrder with correct payload
+      dispatch(addOrder(order));
+  
+      // Simulate delay and clean up
+      setTimeout(() => {
+        setProcessing(false);
+        setSucceeded(true);
+        setDisabled(true);
+        dispatch(emptyCart()); // Empty the cart after order
+        toast.success("Ordered Successfully");
+        navigate("/orders", { replace: true });
+      }, 1000);
+    }
   };
 
   const handleChange = (event) => {
@@ -66,7 +74,7 @@ const Payment = () => {
   return (
     <div className="min-h-[90vh]">
       <div className="">
-        {/* <h1 className="tex-center text-[1.5em]">Checkout {<Link to="/checkout">{!cart.length ? 'empty' : `${cart.length} ${cart.length === 1 ? 'item' : 'items'}` }</Link>}</h1> */}
+        {/* <h1 className="tex-center text-[1.5em]">Checkout {<Link to="/checkout">{!cart.length ? 'empty' : ${cart.length} ${cart.length === 1 ? 'item' : 'items'} }</Link>}</h1> */}
 
         <div className="flex p-[1em] gap-1">
           <div className="payment__title flex-1">
@@ -150,4 +158,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default Payment; 

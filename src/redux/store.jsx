@@ -1,18 +1,11 @@
-import cart from "./cart/cart";
-import user from "./user/user";
-import userInfo from "./userInfo/userInfo";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import {thunk} from 'redux-thunk';
-
-const rootReducer = combineReducers({
-  cart,
-  user,
-  userInfo,
+import { configureStore } from '@reduxjs/toolkit';
+import cartReducer from '../redux/cart/cartSlice'; 
+import userReducer from "../redux/user/userSlice";
+import userInfoReducer from "./userInfo/userInfoSlice";
+export const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+    user: userReducer,
+    userInfo:userInfoReducer
+  },
 });
-
-const store = configureStore({
-  reducer: rootReducer,
-  // middleware: [thunk],
-});
-
-export default store;

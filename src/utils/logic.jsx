@@ -35,9 +35,10 @@ export const getPrice = (price, type = "main") => {
     return stars;
   };
   
-  export const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "INR",
+  export const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 2,
   });
   
   export const getTotalPrice = (cart) =>

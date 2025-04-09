@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
-import Product from "./Product";
 import { prod } from "../Data/data";
 import Carousal from "./Carousal";
 import Footer from "./Footer";
+import ProductGrid from "./ProductGrid";
+
 const Home = () => {
   const [filterData, setFilterData] = useState(prod);
   const [search, setSearch] = useState("");
-  const [noProductsFound, setNoProductsFound] = useState("");
+
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearch(query);
@@ -20,42 +21,38 @@ const Home = () => {
           );
 
     setFilterData(filtered);
-    setNoProductsFound(filtered.length === 0)
   };
 
   return (
     <>
-    
-    <div className="overflow-hidden flex flex-col min-w-screen h-auto pb-3 md:mb-[5rem] mx-auto">
-      <Navbar handleSearch={handleSearch} />
+      <div className="flex flex-col min-h-screen bg-white overflow-x-hidden">
 
-      {/* Making Carousal */}
-      {/* <img src={bg1} alt="bg1" className='h-5' /> */}
-      <div className="min-w-screen h-[50%] flex justify-center items-center">
+        {/* Sticky Navbar */}
+        <header className="fixed top-0 w-full z-50 bg-white shadow-md">
+          <Navbar handleSearch={handleSearch} />
+        </header>
 
-      <Carousal />
+        {/* Space for fixed navbar */}
+        <div className="mt-[40px] md:mt-[40px]" />
+      
+        {/* Carousel Section */}
+        <section className="w-full ">
+          <Carousal />
+        </section>
+
+        {/* Product Grid */}
+        <main className="w-full max-w-[1440px] mx-auto px-4 md:px-10 py-12 md:py-16">
+          {filterData.length === 0 ? (
+            <p className="text-2xl font-semibold text-center text-gray-600 animate-pulse">
+              😢 Sorry! No product found.
+            </p>
+          ) : (
+            <ProductGrid products={filterData} />
+          )}
+        </main>
       </div>
-      <div className="flex justify-center items-center gap-10 max-w-screen flex-wrap  absolute top-[62%] -mt-[10rem] md:-mt-[3rem] md:py-[5rem]">
-      {noProductsFound ? (
-        <p className="w-[100vw] text-2xl font-bold text-center">Sorry ! No product found :-</p>
-      ) : (
-          <>
-           {filterData.map((item) => (
-            <div key={item.id} className="">
 
-              <Product key={item.id} products={item} />
-            </div>
-          ))}
-          </>
-         
-        )}
-        </div>
-
-       
-    </div>
-    <Footer/>
-    
-        </>
+    </>
   );
 };
 
