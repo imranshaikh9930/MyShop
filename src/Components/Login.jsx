@@ -9,8 +9,8 @@ import { getDoc, doc } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const [email, setEmail] = useState("imran@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
