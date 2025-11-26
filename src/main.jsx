@@ -8,7 +8,7 @@ import MyProvider from './Context/Context.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-  <Provider store={store}>
+  <Provider store={store} >
     <MyProvider>
 
     <App />

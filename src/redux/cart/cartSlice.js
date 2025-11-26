@@ -38,6 +38,7 @@ const cartSlice = createSlice({
       if (item && item.quantity > 1) {
         item.quantity -= 1;
       }
+      
     },
 
     emptyCart: (state) => {

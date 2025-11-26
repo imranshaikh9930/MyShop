@@ -36,7 +36,7 @@ const Navbar = ({ handleSearch }) => {
   return (
     <header className="w-full sticky top-0 z-50  bg-white shadow-md">
       <nav className="bg-black max-w-screen h-full flex justify-between items-center text-white p-3 gap-3">
-        <NavLink className="text-xl hidden md:block" to={"/"}>
+        <NavLink className=" font-inter text-xl hidden md:block" to={"/"}>
           MY Shop
         </NavLink>
 

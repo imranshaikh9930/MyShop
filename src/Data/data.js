@@ -9,7 +9,7 @@ export const prod = [
     description:
       "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
     category: "men's clothing",
-    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
     rating: {
       rate: 3.9,
       count: 120,
@@ -26,7 +26,7 @@ export const prod = [
       "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing.",
     category: "men's clothing",
     image:
-      "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
     rating: {
       rate: 4.1,
       count: 259,
@@ -42,7 +42,7 @@ export const prod = [
     description:
       "Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions like hiking, camping, cycling, etc.",
     category: "men's clothing",
-    image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
     rating: {
       rate: 4.7,
       count: 500,
@@ -58,7 +58,7 @@ export const prod = [
     description:
       "The color could be slightly different between on the screen and in practice. Please note that body builds vary.",
     category: "men's clothing",
-    image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+    image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png",
     rating: {
       rate: 2.1,
       count: 430,
@@ -74,7 +74,7 @@ export const prod = [
     description:
       "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl.",
     category: "jewelery",
-    image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+    image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_t.png",
     rating: {
       rate: 4.6,
       count: 400,
@@ -90,7 +90,7 @@ export const prod = [
     description:
       "Designed and sold by Hafeez Center. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
     category: "jewelery",
-    image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+    image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png",
     rating: {
       rate: 3.9,
       count: 70,

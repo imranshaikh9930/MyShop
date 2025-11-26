@@ -4,6 +4,9 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      fontFamily:{
+        inter:["Inter","sans-serif"]
+      },
       animation: {
         'slide-down': 'slideDown 0.5s ease-out',
         'fade-in': 'fadeIn 1s ease-in',

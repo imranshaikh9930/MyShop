@@ -63,8 +63,13 @@ const CheckoutProduct = ({
         {!isPaymentPage && !isOrder && (
           <div className="flex items-center justify-center md:justify-start gap-4 mt-2">
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-1 rounded text-lg transition"
+              disabled={quantity <= 1}
               onClick={handleDecrease}
+              className={`px-3 py-1 rounded text-lg transition
+    ${quantity <= 1
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-gray-300 hover:bg-gray-400 text-gray-800"
+                }`}
             >
               −
             </button>
